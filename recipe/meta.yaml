@@ -1,5 +1,5 @@
 {% set name = "alibabacloud-tea" %}
-{% set version = "0.3.3" %}
+{% set version = "0.3.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/alibabacloud-tea-{{ version }}.tar.gz
-  sha256: 90f1b3310552f7cb004f713e2b55d129acd4a885bd79342df6d621422de23775
+  sha256: 5b0cbe9acfab89ca1dc6b8608c5d92d0915d127bea50ac36f4d14d4200afd82a
 
 build:
   noarch: python
@@ -21,7 +21,8 @@ requirements:
   run:
     - python >=3.6
     - requests >=2.21.0,<3.0.0
-    - aiohttp >=3.7.0,<4.0.0
+    # handle problem with 3.9.0b0 on `main` label
+    - aiohttp >=3.7.0,<=3.8.6
 
 test:
   imports:
